@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     // log tag
-    private static final String TAG = "SignUpModel";
+    private static final String TAG = "SignUp";
 
     // declare of AuthenticationAPI
     private AuthenticationAPI authenticationAPI;
@@ -51,7 +51,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
         // initialize retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.14:8080/user/")
+                .baseUrl("http://192.168.1.117:8080/user/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -64,6 +64,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         switch (view.getId())
         {
             case R.id.btnSignUp:
+
                 break;
         }
     }
@@ -87,7 +88,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
-
+                Log.e(TAG, "onFailure: " + t.getMessage() );
             }
         });
     }

@@ -45,7 +45,7 @@ public class HalamanSignIn extends AppCompatActivity implements View.OnClickList
 
         // initialize Retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.14:8080/user/")
+                .baseUrl("http://192.168.1.117:8080/user/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
