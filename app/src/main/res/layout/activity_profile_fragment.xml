@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.ProfileFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewProfile"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_margin="20dp"
+        app:cardElevation="8dp"
+        app:cardMaxElevation="16dp"
+        app:cardCornerRadius="25dp"
+        android:layout_centerInParent="true"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circleImageProfile"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@mipmap/ic_launcher_round"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                />
+
+            <TextView
+                android:id="@+id/txtNameProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/circleImageProfile"
+                android:text="Mr. ORBADOS"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                />
+
+            <TextView
+                android:id="@+id/txtLevelProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtNameProfile"
+                android:layout_centerHorizontal="true"
+                android:text="Pemula"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_star"
+                android:layout_above="@id/txtNumberLevelProfile"
+                android:layout_centerHorizontal="true"
+                />
+
+            <TextView
+                android:id="@+id/txtNumberLevelProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="22"
+                android:textSize="35dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="50dp"
+                />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
