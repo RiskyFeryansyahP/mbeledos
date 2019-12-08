@@ -51,7 +51,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
         // initialize retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.117:8080/user/")
+                .baseUrl("http://192.168.1.106:8080/user/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

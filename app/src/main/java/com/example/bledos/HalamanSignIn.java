@@ -2,6 +2,7 @@ package com.example.bledos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,7 +46,7 @@ public class HalamanSignIn extends AppCompatActivity implements View.OnClickList
 
         // initialize Retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.117:8080/user/")
+                .baseUrl("http://192.168.1.106:8080/user/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -82,6 +83,7 @@ public class HalamanSignIn extends AppCompatActivity implements View.OnClickList
 
                 Log.d(TAG, "onResponse Status Code Succeed : " + response.code());
                 Log.d(TAG, "onResponse Body : " + response.body());
+                startActivity(new Intent(HalamanSignIn.this, HomeActivity.class));
             }
 
             @Override
