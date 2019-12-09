@@ -2,9 +2,9 @@ package com.example.bledos.model;
 
 public class SignInModel {
 
-    private String phonenumber;
+    private String nohp;
 
-    public SignInModel(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public SignInModel(String nohp) {
+        this.nohp = nohp;
     }
 }

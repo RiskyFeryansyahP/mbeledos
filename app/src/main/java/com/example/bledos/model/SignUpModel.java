@@ -2,18 +2,18 @@ package com.example.bledos.model;
 
 public class SignUpModel {
 
-    private String name;
+    private String nama;
 
-    private String address;
+    private String alamat;
 
-    private String date;
+    private String tgl_lahir;
 
-    private String phonenumber;
+    private String nohp;
 
-    public SignUpModel(String name, String address, String date, String phonenumber) {
-        this.name = name;
-        this.address = address;
-        this.date = date;
-        this.phonenumber = phonenumber;
+    public SignUpModel(String nama, String alamat, String tgl_lahir, String nohp) {
+        this.nama = nama;
+        this.alamat = alamat;
+        this.tgl_lahir = tgl_lahir;
+        this.nohp = nohp;
     }
 }
