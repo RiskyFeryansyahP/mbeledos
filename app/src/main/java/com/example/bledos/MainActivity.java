@@ -7,14 +7,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.bledos.Helper.SharedPreferencesConfig;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnSignIn, btnSignup;
+
+    private SharedPreferencesConfig sharedPreferencesConfig;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sharedPreferencesConfig = new SharedPreferencesConfig(this);
+
+        if (sharedPreferencesConfig.readLoginStatus()) {
+            startActivity(new Intent(this, HomeActivity.class));
+            finish();
+        }
 
         // declare variable of button
         btnSignIn = findViewById(R.id.btnSignInRoute);
