@@ -64,7 +64,12 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         switch (view.getId())
         {
             case R.id.btnSignUp:
+                String name = editTextName.getText().toString();
+                String address = editTextAddress.getText().toString();
+                String date = editTextDate.getText().toString();
+                String phonenumber = editTextPhoneNumber.getText().toString();
 
+                DoRegister(name, address, date, phonenumber);
                 break;
         }
     }
