@@ -77,4 +77,14 @@
 
     </androidx.cardview.widget.CardView>
 
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOGOUT"
+        android:layout_below="@+id/cardViewProfile"
+        android:layout_centerHorizontal="true"
+        style="@style/button_style"
+        />
+
 </RelativeLayout>
