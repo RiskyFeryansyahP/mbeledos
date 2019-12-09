@@ -3,14 +3,17 @@ package com.example.bledos;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.bledos.Helper.SharedPreferencesConfig;
 import com.example.bledos.interfaces.AuthenticationAPI;
 import com.example.bledos.model.SignInModel;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import retrofit2.Call;
@@ -28,6 +31,9 @@ public class HalamanSignIn extends AppCompatActivity implements View.OnClickList
 
     private SignInModel signIn;
 
+    // shared preferences load
+    private SharedPreferencesConfig sharedPreferencesConfig;
+
     // declare variable of widget
     private Button btnSignin;
     private EditText editTextNoHp;
@@ -36,6 +42,9 @@ public class HalamanSignIn extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_halaman_sign_in);
+
+        // inialize shared preferences
+        sharedPreferencesConfig = new SharedPreferencesConfig(this);
 
         // initialize id for any widget
         editTextNoHp = findViewById(R.id.nohpRegister);
@@ -83,7 +92,13 @@ public class HalamanSignIn extends AppCompatActivity implements View.OnClickList
 
                 Log.d(TAG, "onResponse Status Code Succeed : " + response.code());
                 Log.d(TAG, "onResponse Body : " + response.body());
+                JsonObject jsonObject = response.body();
+                String name = jsonObject.get("nama").getAsString();
+
+                sharedPreferencesConfig.writeLoginStatus(true, name);
+
                 startActivity(new Intent(HalamanSignIn.this, HomeActivity.class));
+                finish();
             }
 
             @Override
