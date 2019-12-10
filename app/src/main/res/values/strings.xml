@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Bledos</string>
 
+    <!-- ip configuration back-end   -->
+    <string name="ip_server">192.168.1.117.</string>
+
     <!-- preferences after login    -->
     <string name="login_preferences">login_preferences</string>
     <string name="login_status_preferences">login_status_preferences</string>
