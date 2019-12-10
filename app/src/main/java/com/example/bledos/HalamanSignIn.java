@@ -55,7 +55,7 @@ public class HalamanSignIn extends AppCompatActivity implements View.OnClickList
 
         // initialize Retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.106:8080/user/")
+                .baseUrl("http://"+getResources().getString(R.string.ip_server)+":8080/user/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -69,6 +69,13 @@ public class HalamanSignIn extends AppCompatActivity implements View.OnClickList
         {
             case R.id.btnSignIn:
                 String phonenumber = editTextNoHp.getText().toString();
+
+                if (editTextNoHp.length() == 0) {
+                    editTextNoHp.setError("Please enter a nohp");
+                    editTextNoHp.requestFocus();
+                    return;
+                }
+
                 DoLogin(phonenumber);
                 break;
         }
