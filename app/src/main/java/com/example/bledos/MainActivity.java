@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             case R.id.btnSignInRoute:
                 startActivity(new Intent(MainActivity.this, HalamanSignIn.class));
-                finish();
                 break;
             case R.id.btnSignUpRoute:
                 startActivity(new Intent(MainActivity.this, SignUp.class));
