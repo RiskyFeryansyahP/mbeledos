@@ -51,7 +51,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
         // initialize retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.106:8080/user/")
+                .baseUrl("http://"+getResources().getString(R.string.ip_server)+":8080/user/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -64,13 +64,42 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         switch (view.getId())
         {
             case R.id.btnSignUp:
+                boolean status = true; // variable to check validation
+
                 String name = editTextName.getText().toString();
                 String address = editTextAddress.getText().toString();
                 String date = editTextDate.getText().toString();
                 String phonenumber = editTextPhoneNumber.getText().toString();
 
-                DoRegister(name, address, date, phonenumber);
+                // validation
+                if (editTextName.length() == 0) {
+                    editTextName.setError("Please enter a Name");
+                    editTextName.requestFocus();
+                    status = false;
+                }
+
+                if (editTextAddress.length() == 0) {
+                    editTextAddress.setError("Please enter a Address");
+                    status = false;
+                }
+
+                if (editTextDate.length() == 0) {
+                    editTextDate.setError("Please enter a Date");
+                    status = false;
+                }
+
+                if (editTextPhoneNumber.length() == 0) {
+                    editTextPhoneNumber.setError("Please enter a phone number");
+                    status = false;
+                }
+                // end validation
+
+                if (status) {
+                    DoRegister(name, address, date, phonenumber);
+                }
+
                 break;
+
         }
     }
 
