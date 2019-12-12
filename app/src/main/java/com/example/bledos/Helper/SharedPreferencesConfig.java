@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.example.bledos.R;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 public class SharedPreferencesConfig {
 
@@ -16,20 +19,28 @@ public class SharedPreferencesConfig {
         sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.login_preferences), context.MODE_PRIVATE);
     }
 
-    public void writeLoginStatus(boolean status, String name) {
+    public void writeLoginStatus(boolean status) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putBoolean(context.getResources().getString(R.string.login_status_preferences), status);
-        editor.putString(context.getResources().getString(R.string.name_profile), name);
 
         editor.apply();
+    }
+
+    public void writeLoginProfile(JsonObject profile) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString(context.getResources().getString(R.string.user_profile), profile.toString());
+
+        editor.apply();
+
     }
 
     public void writeLogoutStatus() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putBoolean(context.getResources().getString(R.string.login_status_preferences), false);
-        editor.putString(context.getResources().getString(R.string.name_profile), "");
+        editor.putString(context.getResources().getString(R.string.user_profile), "");
 
         editor.apply();
     }
@@ -40,9 +51,11 @@ public class SharedPreferencesConfig {
         return status;
     }
 
-    public String readNameProfile() {
+    public JsonObject readUserProfile() {
         String nameProfile = "";
-        nameProfile = sharedPreferences.getString(context.getResources().getString(R.string.name_profile), "");
-        return nameProfile;
+        nameProfile = sharedPreferences.getString(context.getResources().getString(R.string.user_profile), "");
+
+
+        return new Gson().fromJson(nameProfile, JsonObject.class);
     }
 }
