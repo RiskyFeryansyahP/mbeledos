@@ -105,7 +105,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     private void DoRegister(String name, String address, String date, String phonenumber)
     {
-        signUp = new SignUpModel(name, address, date, phonenumber);
+        signUp = new SignUpModel(name, address, date, phonenumber, 1, "", "pemula");
         Call<JsonObject> call = authenticationAPI.RegisterUser(signUp);
         call.enqueue(new Callback<JsonObject>() {
             @Override
