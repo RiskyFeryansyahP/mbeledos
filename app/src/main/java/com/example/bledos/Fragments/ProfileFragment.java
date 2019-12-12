@@ -2,12 +2,10 @@ package com.example.bledos.Fragments;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +15,7 @@ import android.widget.TextView;
 import com.example.bledos.HalamanSignIn;
 import com.example.bledos.Helper.SharedPreferencesConfig;
 import com.example.bledos.R;
+import com.google.gson.JsonObject;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
 
@@ -24,7 +23,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private SharedPreferencesConfig sharedPreferencesConfig;
 
-    private TextView txtNameProfile;
+    private TextView txtNameProfile, txtLevelProfile, txtNumberLevelProfile;
 
     private Button btnLogout;
 
@@ -39,13 +38,17 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        String name = sharedPreferencesConfig.readNameProfile();
+        JsonObject profile = sharedPreferencesConfig.readUserProfile();
 
         txtNameProfile = getActivity().findViewById(R.id.txtNameProfile);
+        txtLevelProfile = getActivity().findViewById(R.id.txtLevelProfile);
+        txtNumberLevelProfile = getActivity().findViewById(R.id.txtNumberLevelProfile);
 
         btnLogout = getActivity().findViewById(R.id.btnLogout);
 
-        txtNameProfile.setText(name);
+        txtNameProfile.setText(profile.get("nama").getAsString());
+        txtLevelProfile.setText(profile.get("kategori_level").getAsString());
+        txtNumberLevelProfile.setText(profile.get("level").toString());
 
         btnLogout.setOnClickListener(this);
 
