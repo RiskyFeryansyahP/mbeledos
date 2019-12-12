@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/linearLayoutRecyclerHome"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewItemHome"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="8dp"
+        app:cardMaxElevation="16dp"
+        >
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/imageRecyclerViewHome"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher"
+                android:layout_centerVertical="true"
+                />
+
+            <TextView
+                android:id="@+id/txtNameBengkel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bengkel Shockbreker Motor"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:layout_toEndOf="@id/imageRecyclerViewHome"
+                android:layout_alignTop="@id/imageRecyclerViewHome"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="16dp"
+                />
+
+            <TextView
+                android:id="@+id/txtAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jalan Tidar No 100"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textSize="12dp"
+                android:paddingStart="8dp"
+                android:layout_toEndOf="@id/imageRecyclerViewHome"
+                android:layout_toStartOf="@id/txtNameBengkel"
+                android:layout_alignStart="@id/txtNameBengkel"
+                android:layout_below="@id/txtNameBengkel"
+                />
+
+            <TextView
+                android:id="@+id/txtRangeDestination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1KM"
+                android:textSize="12dp"
+                android:paddingStart="8dp"
+                android:layout_below="@id/txtAddress"
+                android:layout_alignStart="@id/txtAddress"
+                android:layout_alignParentEnd="true"
+                />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#F3F3F3"
+        />
+
+</LinearLayout>
