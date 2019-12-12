@@ -100,9 +100,10 @@ public class HalamanSignIn extends AppCompatActivity implements View.OnClickList
                 Log.d(TAG, "onResponse Status Code Succeed : " + response.code());
                 Log.d(TAG, "onResponse Body : " + response.body());
                 JsonObject jsonObject = response.body();
-                String name = jsonObject.get("nama").getAsString();
 
-                sharedPreferencesConfig.writeLoginStatus(true, name);
+                sharedPreferencesConfig.writeLoginStatus(true);
+
+                sharedPreferencesConfig.writeLoginProfile(jsonObject);
 
                 startActivity(new Intent(HalamanSignIn.this, HomeActivity.class));
                 finish();
