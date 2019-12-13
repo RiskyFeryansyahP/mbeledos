@@ -13,9 +13,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bledos.R;
 
+import java.util.ArrayList;
+
 public class RecycleViewAdapterHome extends RecyclerView.Adapter<RecycleViewAdapterHome.ViewHolder> {
 
     private static final String TAG = "RecycleViewAdapterHome";
+
+    private ArrayList<String> kodeBengkel = new ArrayList<>();
+    private ArrayList<String> namaBengkel = new ArrayList<>();
+    private ArrayList<String> alamatBengkel = new ArrayList<>();
+
+    public RecycleViewAdapterHome(ArrayList<String> kodeBengkel, ArrayList<String> namaBengkel, ArrayList<String> alamatBengkel) {
+        this.kodeBengkel = kodeBengkel;
+        this.namaBengkel = namaBengkel;
+        this.alamatBengkel = alamatBengkel;
+    }
 
     @NonNull
     @Override
@@ -30,8 +42,8 @@ public class RecycleViewAdapterHome extends RecyclerView.Adapter<RecycleViewAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.imageRecyclerViewHome.setImageResource(R.mipmap.ic_launcher);
-        holder.txtNameBengkel.setText("Bengkel Shockbreker Motor");
-        holder.txtAddress.setText("Jl. Raya Gadang, Gadang, Kec. Sukun, Kota Malang");
+        holder.txtNameBengkel.setText(namaBengkel.get(position));
+        holder.txtAddress.setText(alamatBengkel.get(position));
         holder.txtRangeDestination.setText("1KM");
         holder.cardViewItemHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +55,7 @@ public class RecycleViewAdapterHome extends RecyclerView.Adapter<RecycleViewAdap
 
     @Override
     public int getItemCount() {
-        return 10;
+        return kodeBengkel.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
