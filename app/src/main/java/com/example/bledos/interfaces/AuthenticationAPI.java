@@ -1,8 +1,10 @@
 package com.example.bledos.interfaces;
 
 import com.example.bledos.SignUp;
+import com.example.bledos.model.RequestNexmoSMS;
 import com.example.bledos.model.SignInModel;
 import com.example.bledos.model.SignUpModel;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import retrofit2.Call;
@@ -16,4 +18,7 @@ public interface AuthenticationAPI {
 
     @POST("register")
     Call<JsonObject> RegisterUser(@Body SignUpModel signUp);
+
+    @POST("verification")
+    Call<JsonObject> SendVerificationCode(@Body RequestNexmoSMS sms);
 }
