@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".TransaksiActivity"></activity>
+        <activity android:name=".TransaksiActivity" />
         <activity android:name=".OrderActivity" />
         <activity android:name=".Fragments.HomeFragment" />
         <activity android:name=".Fragments.ProfileFragment" />

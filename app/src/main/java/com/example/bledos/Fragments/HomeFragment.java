@@ -39,6 +39,8 @@ public class HomeFragment extends Fragment {
 
     private BengkelAPI bengkelAPI;
 
+    private RecyclerView recyclerView;
+
     // data for recyclerview
     private ArrayList<String> kodeBengkel = new ArrayList<>();
     private ArrayList<String> namaBengkel = new ArrayList<>();
@@ -57,6 +59,8 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         txtWelcomeHome = getActivity().findViewById(R.id.txtWelcomeHome);
+
+        recyclerView = getActivity().findViewById(R.id.recyclerViewHome);
 
         JsonObject profile = sharedPreferencesConfig.readUserProfile();
 
@@ -112,7 +116,6 @@ public class HomeFragment extends Fragment {
         Log.d(TAG, "setAdapterRecyclerViewHome: Called");
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        RecyclerView recyclerView = getActivity().findViewById(R.id.recyclerViewHome);
         recyclerView.setLayoutManager(layoutManager);
 
         RecycleViewAdapterHome recycleViewAdapterHome = new RecycleViewAdapterHome(kodeBengkel, namaBengkel, alamatBengkel);

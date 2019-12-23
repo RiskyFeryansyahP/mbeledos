@@ -12,9 +12,13 @@ import android.widget.EditText;
 
 import com.example.bledos.Helper.SharedPreferencesConfig;
 import com.example.bledos.interfaces.AuthenticationAPI;
+import com.example.bledos.model.RequestNexmoSMS;
 import com.example.bledos.model.SignInModel;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import javax.security.auth.login.LoginException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -84,7 +88,7 @@ public class HalamanSignIn extends AppCompatActivity implements View.OnClickList
     private void DoLogin(String phonenumber)
     {
         signIn = new SignInModel(phonenumber);
-
+        final RequestNexmoSMS requestNexmoSMS = new RequestNexmoSMS(phonenumber);
         // call api authentication
         Call<JsonObject> call = authenticationAPI.LoginUser(signIn);
         call.enqueue(new Callback<JsonObject>() {
@@ -101,12 +105,30 @@ public class HalamanSignIn extends AppCompatActivity implements View.OnClickList
                 Log.d(TAG, "onResponse Body : " + response.body());
                 JsonObject jsonObject = response.body();
 
-                sharedPreferencesConfig.writeLoginStatus(true);
-
                 sharedPreferencesConfig.writeLoginProfile(jsonObject);
 
-                startActivity(new Intent(HalamanSignIn.this, HomeActivity.class));
-                finish();
+                Call<JsonObject> sms = authenticationAPI.SendVerificationCode(requestNexmoSMS);
+                sms.enqueue(new Callback<JsonObject>() {
+                    @Override
+                    public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                        if (!response.isSuccessful()) {
+                            Log.d(TAG, "onResponse: code failed : " + response.code());
+                        }
+
+                        Log.d(TAG, "onResponse: Verification " + response.body());
+                        JsonObject jsonObject1 = response.body();
+                        String code = jsonObject1.get("OTP").getAsString();
+                        VerificationActivity.OTP = Integer.parseInt(code);
+
+                        startActivity(new Intent(HalamanSignIn.this, VerificationActivity.class));
+                        finish();
+                    }
+
+                    @Override
+                    public void onFailure(Call<JsonObject> call, Throwable t) {
+                        Log.e(TAG, "onFailure: " + t.getMessage() );
+                    }
+                });
             }
 
             @Override
