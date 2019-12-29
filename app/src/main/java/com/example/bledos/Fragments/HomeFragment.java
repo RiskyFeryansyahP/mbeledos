@@ -118,7 +118,7 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
-        RecycleViewAdapterHome recycleViewAdapterHome = new RecycleViewAdapterHome(kodeBengkel, namaBengkel, alamatBengkel);
+        RecycleViewAdapterHome recycleViewAdapterHome = new RecycleViewAdapterHome(getActivity(), kodeBengkel, namaBengkel, alamatBengkel);
         recyclerView.setAdapter(recycleViewAdapterHome);
     }
 }
