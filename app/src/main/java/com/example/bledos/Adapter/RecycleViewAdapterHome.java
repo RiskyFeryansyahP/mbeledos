@@ -1,5 +1,7 @@
 package com.example.bledos.Adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bledos.OrderActivity;
 import com.example.bledos.R;
+import com.example.bledos.TransaksiActivity;
 
 import java.util.ArrayList;
 
@@ -22,8 +26,10 @@ public class RecycleViewAdapterHome extends RecyclerView.Adapter<RecycleViewAdap
     private ArrayList<String> kodeBengkel = new ArrayList<>();
     private ArrayList<String> namaBengkel = new ArrayList<>();
     private ArrayList<String> alamatBengkel = new ArrayList<>();
+    private Context context;
 
-    public RecycleViewAdapterHome(ArrayList<String> kodeBengkel, ArrayList<String> namaBengkel, ArrayList<String> alamatBengkel) {
+    public RecycleViewAdapterHome(Context context, ArrayList<String> kodeBengkel, ArrayList<String> namaBengkel, ArrayList<String> alamatBengkel) {
+        this.context = context;
         this.kodeBengkel = kodeBengkel;
         this.namaBengkel = namaBengkel;
         this.alamatBengkel = alamatBengkel;
@@ -40,7 +46,7 @@ public class RecycleViewAdapterHome extends RecyclerView.Adapter<RecycleViewAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         holder.imageRecyclerViewHome.setImageResource(R.mipmap.ic_launcher);
         holder.txtNameBengkel.setText(namaBengkel.get(position));
         holder.txtAddress.setText(alamatBengkel.get(position));
@@ -49,6 +55,7 @@ public class RecycleViewAdapterHome extends RecyclerView.Adapter<RecycleViewAdap
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick: CardView List Item Recycler View Home, Position : " + position);
+                context.startActivity(new Intent(context, OrderActivity.class));
             }
         });
     }
