@@ -12,6 +12,8 @@ import com.example.bledos.interfaces.AuthenticationAPI;
 import com.example.bledos.model.SignUpModel;
 import com.google.gson.JsonObject;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,10 +51,21 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         // set action of widget or component
         btnSignup.setOnClickListener(this);
 
+        // create OkHttp Client
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        if (BuildConfig.DEBUG) {
+            builder.addInterceptor(httpLoggingInterceptor);
+        }
+
         // initialize retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://"+getResources().getString(R.string.ip_server)+":8080/user/")
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(builder.build())
                 .build();
 
         // initialize AuthenticationAPI interface

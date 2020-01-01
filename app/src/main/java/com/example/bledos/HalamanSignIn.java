@@ -20,6 +20,8 @@ import com.google.gson.JsonObject;
 
 import javax.security.auth.login.LoginException;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -57,10 +59,23 @@ public class HalamanSignIn extends AppCompatActivity implements View.OnClickList
         // initialize action every widget
         btnSignin.setOnClickListener(this);
 
+        // create OkHttp client
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        // logging okhttp only use when in debug mode for safety
+        if (BuildConfig.DEBUG) {
+            builder.addInterceptor(httpLoggingInterceptor);
+        }
+
         // initialize Retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://"+getResources().getString(R.string.ip_server)+":8080/user/")
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(builder.build())
                 .build();
 
         // initalize AuthenticationAPI Interface
