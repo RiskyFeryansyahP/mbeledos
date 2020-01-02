@@ -18,6 +18,7 @@ import com.example.bledos.Helper.SharedPreferencesConfig;
 import com.example.bledos.R;
 import com.example.bledos.interfaces.BengkelAPI;
 import com.example.bledos.model.BengkelModel;
+import com.example.bledos.model.LocationModel;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
@@ -79,7 +80,14 @@ public class HomeFragment extends Fragment {
     }
 
     public void GetAllBengkel() {
-        Call<List<BengkelModel>> call = bengkelAPI.GetAllBengkel();
+
+        double latitude, longitude;
+        latitude = sharedPreferencesConfig.readLatitudeLocation();
+        longitude = sharedPreferencesConfig.readLongitudeLocation();
+
+        LocationModel locationModel = new LocationModel(latitude, longitude);
+
+        Call<List<BengkelModel>> call = bengkelAPI.GetNearestBengkel(locationModel);
         call.enqueue(new Callback<List<BengkelModel>>() {
             @Override
             public void onResponse(Call<List<BengkelModel>> call, Response<List<BengkelModel>> response) {
