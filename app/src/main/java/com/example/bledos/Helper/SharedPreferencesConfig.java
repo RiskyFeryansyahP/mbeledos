@@ -58,4 +58,32 @@ public class SharedPreferencesConfig {
 
         return new Gson().fromJson(nameProfile, JsonObject.class);
     }
+
+    public void writeLatitudeLocation(double latitude) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString(context.getResources().getString(R.string.latitude), String.valueOf(latitude));
+        editor.commit();
+    }
+
+    public void writeLongitudeLocation(double longitude) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString(context.getResources().getString(R.string.longitude), String.valueOf(longitude));
+        editor.commit();
+    }
+
+    public double readLatitudeLocation() {
+        String latitude;
+
+        latitude = sharedPreferences.getString(context.getResources().getString(R.string.latitude), "");
+        return Double.valueOf(latitude);
+    }
+
+    public double readLongitudeLocation() {
+        String longitude;
+
+        longitude = sharedPreferences.getString(context.getResources().getString(R.string.longitude), "");
+        return Double.valueOf(longitude);
+    }
 }
