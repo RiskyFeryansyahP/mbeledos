@@ -10,18 +10,24 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.bledos.Helper.SharedPreferencesConfig;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
 
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 0;
+    private FusedLocationProviderClient fusedLocationProviderClient;
+
     private Button btnSignIn, btnSignup;
 
     private SharedPreferencesConfig sharedPreferencesConfig;
@@ -31,9 +37,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        createRequestPermission();
-        askRequestPermission();
         sharedPreferencesConfig = new SharedPreferencesConfig(this);
+
+        // get last location
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        // createRequestPermission();
+        askRequestPermission();
 
         if (sharedPreferencesConfig.readLoginStatus()) {
             startActivity(new Intent(this, HomeActivity.class));
@@ -73,6 +83,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Log.d(TAG, "onRequestPermissionsResult: Request has been granted");
+                    fusedLocationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            if (location == null) {
+                                Log.d(TAG, "onSuccess: Location Null / Location Undetected!");
+                                return;
+                            }
+
+                            sharedPreferencesConfig.writeLatitudeLocation(location.getLatitude());
+                            sharedPreferencesConfig.writeLongitudeLocation(location.getLongitude());
+                        }
+                    });
                 }
                 else {
                     Log.d(TAG, "onRequestPermissionsResult: Create Request Permission");
