@@ -8,4 +8,6 @@
     <string name="login_preferences">login_preferences</string>
     <string name="login_status_preferences">login_status_preferences</string>
     <string name="user_profile">user_profile</string>
+    <string name="latitude">last_latitude_location</string>
+    <string name="longitude">last_longitude_location</string>
 </resources>
