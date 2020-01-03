@@ -26,13 +26,17 @@ public class RecycleViewAdapterHome extends RecyclerView.Adapter<RecycleViewAdap
     private ArrayList<String> kodeBengkel = new ArrayList<>();
     private ArrayList<String> namaBengkel = new ArrayList<>();
     private ArrayList<String> alamatBengkel = new ArrayList<>();
+    private ArrayList<Double> latitude = new ArrayList<>();
+    private ArrayList<Double> longitude = new ArrayList<>();
     private Context context;
 
-    public RecycleViewAdapterHome(Context context, ArrayList<String> kodeBengkel, ArrayList<String> namaBengkel, ArrayList<String> alamatBengkel) {
+    public RecycleViewAdapterHome(Context context, ArrayList<String> kodeBengkel, ArrayList<String> namaBengkel, ArrayList<String> alamatBengkel, ArrayList<Double> latitude, ArrayList<Double> longitude) {
         this.context = context;
         this.kodeBengkel = kodeBengkel;
         this.namaBengkel = namaBengkel;
         this.alamatBengkel = alamatBengkel;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     @NonNull
@@ -55,6 +59,8 @@ public class RecycleViewAdapterHome extends RecyclerView.Adapter<RecycleViewAdap
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick: CardView List Item Recycler View Home, Position : " + position);
+                OrderActivity.latitudePlace = latitude.get(position);
+                OrderActivity.longitudePlace = longitude.get(position);
                 context.startActivity(new Intent(context, OrderActivity.class));
             }
         });
