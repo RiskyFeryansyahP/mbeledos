@@ -46,6 +46,8 @@ public class HomeFragment extends Fragment {
     private ArrayList<String> kodeBengkel = new ArrayList<>();
     private ArrayList<String> namaBengkel = new ArrayList<>();
     private ArrayList<String> alamatBengkel = new ArrayList<>();
+    private ArrayList<Double> Latitude = new ArrayList<>();
+    private ArrayList<Double> Longitude = new ArrayList<>();
 
     @Nullable
     @Override
@@ -81,7 +83,7 @@ public class HomeFragment extends Fragment {
 
     public void GetAllBengkel() {
 
-        double latitude, longitude;
+        final double latitude, longitude;
         latitude = sharedPreferencesConfig.readLatitudeLocation();
         longitude = sharedPreferencesConfig.readLongitudeLocation();
 
@@ -103,6 +105,8 @@ public class HomeFragment extends Fragment {
                         kodeBengkel.add(bengkel.getKode_bengkel());
                         namaBengkel.add(bengkel.getNama_bengkel());
                         alamatBengkel.add(bengkel.getAlamat_bengkel());
+                        Latitude.add(bengkel.getLatitude());
+                        Longitude.add(bengkel.getLongitude());
                     }
 
                     setAdapterRecyclerViewHome(kodeBengkel, namaBengkel, alamatBengkel);
@@ -126,7 +130,7 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
-        RecycleViewAdapterHome recycleViewAdapterHome = new RecycleViewAdapterHome(getActivity(), kodeBengkel, namaBengkel, alamatBengkel);
+        RecycleViewAdapterHome recycleViewAdapterHome = new RecycleViewAdapterHome(getActivity(), kodeBengkel, namaBengkel, alamatBengkel, Latitude, Longitude);
         recyclerView.setAdapter(recycleViewAdapterHome);
     }
 }
