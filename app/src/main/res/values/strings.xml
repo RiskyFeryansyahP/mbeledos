@@ -4,6 +4,9 @@
     <!-- ip configuration back-end   -->
     <string name="ip_server">192.168.1.106</string>
 
+    <!-- -->
+    <string name="API_KEY_MAPBOX">pk.eyJ1Ijoicmlza3lmZXJ5YW5zeWFoIiwiYSI6ImNrMmp4czJ6NDF3OHYzYnQ4ZjR2eXJobWYifQ.RBkff7FzZpUG-T836rUMkg</string>
+
     <!-- preferences after login    -->
     <string name="login_preferences">login_preferences</string>
     <string name="login_status_preferences">login_status_preferences</string>
