@@ -28,15 +28,17 @@ public class RecycleViewAdapterHome extends RecyclerView.Adapter<RecycleViewAdap
     private ArrayList<String> alamatBengkel = new ArrayList<>();
     private ArrayList<Double> latitude = new ArrayList<>();
     private ArrayList<Double> longitude = new ArrayList<>();
+    private ArrayList<String> phonenumber = new ArrayList<>();
     private Context context;
 
-    public RecycleViewAdapterHome(Context context, ArrayList<String> kodeBengkel, ArrayList<String> namaBengkel, ArrayList<String> alamatBengkel, ArrayList<Double> latitude, ArrayList<Double> longitude) {
+    public RecycleViewAdapterHome(Context context, ArrayList<String> kodeBengkel, ArrayList<String> namaBengkel, ArrayList<String> alamatBengkel, ArrayList<Double> latitude, ArrayList<Double> longitude, ArrayList<String> phonenumber) {
         this.context = context;
         this.kodeBengkel = kodeBengkel;
         this.namaBengkel = namaBengkel;
         this.alamatBengkel = alamatBengkel;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.phonenumber = phonenumber;
     }
 
     @NonNull
@@ -61,6 +63,9 @@ public class RecycleViewAdapterHome extends RecyclerView.Adapter<RecycleViewAdap
                 Log.d(TAG, "onClick: CardView List Item Recycler View Home, Position : " + position);
                 OrderActivity.latitudePlace = latitude.get(position);
                 OrderActivity.longitudePlace = longitude.get(position);
+                OrderActivity.namaBengkel = namaBengkel.get(position);
+                OrderActivity.alamatBengkel = alamatBengkel.get(position);
+                TransaksiActivity.phonenumber = phonenumber.get(position);
                 context.startActivity(new Intent(context, OrderActivity.class));
             }
         });

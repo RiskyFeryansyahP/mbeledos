@@ -48,6 +48,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<String> alamatBengkel = new ArrayList<>();
     private ArrayList<Double> Latitude = new ArrayList<>();
     private ArrayList<Double> Longitude = new ArrayList<>();
+    private ArrayList<String> phonenumber = new ArrayList<>();
 
     @Nullable
     @Override
@@ -107,9 +108,12 @@ public class HomeFragment extends Fragment {
                         alamatBengkel.add(bengkel.getAlamat_bengkel());
                         Latitude.add(bengkel.getLatitude());
                         Longitude.add(bengkel.getLongitude());
+                        phonenumber.add(bengkel.getPhonenumber());
+
+                        Log.d(TAG, "onResponse: Phone " + bengkel.getPhonenumber());
                     }
 
-                    setAdapterRecyclerViewHome(kodeBengkel, namaBengkel, alamatBengkel);
+                    setAdapterRecyclerViewHome(kodeBengkel, namaBengkel, alamatBengkel, Latitude, Longitude, phonenumber);
                 }
                 else
                 {
@@ -124,13 +128,13 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    public void setAdapterRecyclerViewHome(ArrayList<String> kodeBengkel, ArrayList<String> namaBengkel, ArrayList<String> alamatBengkel) {
+    public void setAdapterRecyclerViewHome(ArrayList<String> kodeBengkel, ArrayList<String> namaBengkel, ArrayList<String> alamatBengkel, ArrayList<Double> Latitude, ArrayList<Double> Longitude, ArrayList<String> phonenumber) {
         Log.d(TAG, "setAdapterRecyclerViewHome: Called");
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
-        RecycleViewAdapterHome recycleViewAdapterHome = new RecycleViewAdapterHome(getActivity(), kodeBengkel, namaBengkel, alamatBengkel, Latitude, Longitude);
+        RecycleViewAdapterHome recycleViewAdapterHome = new RecycleViewAdapterHome(getActivity(), kodeBengkel, namaBengkel, alamatBengkel, Latitude, Longitude, phonenumber);
         recyclerView.setAdapter(recycleViewAdapterHome);
     }
 }

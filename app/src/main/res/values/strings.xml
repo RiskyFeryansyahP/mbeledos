@@ -16,4 +16,7 @@
     <string name="user_profile">user_profile</string>
     <string name="latitude">last_latitude_location</string>
     <string name="longitude">last_longitude_location</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/bengkel_nama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="88dp"
@@ -24,16 +24,16 @@
         app:layout_constraintVertical_bias="0.354" />
 
     <TextView
-        android:id="@+id/alamat"
+        android:id="@+id/bengkel_alamat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="JL.Brikjen Abdulmanan "
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/textView6"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintEnd_toEndOf="@+id/bengkel_nama"
+        app:layout_constraintHorizontal_bias="0.32"
+        app:layout_constraintStart_toStartOf="@+id/bengkel_nama"
+        app:layout_constraintTop_toBottomOf="@+id/bengkel_nama" />
 
     <ImageView
         android:id="@+id/imageView5"

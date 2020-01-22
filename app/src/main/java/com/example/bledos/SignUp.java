@@ -41,8 +41,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_sign_up);
 
         // initialize widget component
-        editTextName = findViewById(R.id.nama);
-        editTextAddress = findViewById(R.id.alamat);
+        editTextName = findViewById(R.id.nama_bengkel);
+        editTextAddress = findViewById(R.id.bengkel_alamat);
         editTextDate = findViewById(R.id.tgl);
         editTextPhoneNumber = findViewById(R.id.nohpRegister);
 

@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:id="@+id/nama"
+        android:id="@+id/nama_bengkel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="88dp"
@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0.242" />
 
     <TextView
-        android:id="@+id/alamat"
+        android:id="@+id/bengkel_alamat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="19dp"
@@ -32,8 +32,8 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/nama"
-        app:layout_constraintTop_toBottomOf="@+id/nama" />
+        app:layout_constraintStart_toStartOf="@+id/nama_bengkel"
+        app:layout_constraintTop_toBottomOf="@+id/nama_bengkel" />
 
     <TextView
         android:id="@+id/jarak"
@@ -46,8 +46,8 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="@+id/nama"
-        app:layout_constraintTop_toBottomOf="@+id/alamat" />
+        app:layout_constraintStart_toStartOf="@+id/nama_bengkel"
+        app:layout_constraintTop_toBottomOf="@+id/bengkel_alamat" />
 
     <ImageView
         android:id="@+id/imageView6"

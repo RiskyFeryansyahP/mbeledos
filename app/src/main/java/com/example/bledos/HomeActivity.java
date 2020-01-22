@@ -9,6 +9,7 @@ import android.widget.FrameLayout;
 
 import com.example.bledos.Fragments.HomeFragment;
 import com.example.bledos.Fragments.ProfileFragment;
+import com.example.bledos.Fragments.RiwayatFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -43,6 +44,9 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
                 break;
             case R.id.iconProfile:
                 getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new ProfileFragment()).commit();
+                break;
+            case R.id.iconHistory:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new RiwayatFragment()).commit();
                 break;
         }
 

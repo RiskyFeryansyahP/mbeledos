@@ -11,7 +11,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.bledos.Helper.SharedPreferencesConfig;
-import com.google.gson.JsonObject;
 import com.mapbox.api.directions.v5.DirectionsCriteria;
 import com.mapbox.api.directions.v5.MapboxDirections;
 import com.mapbox.api.directions.v5.models.DirectionsResponse;
@@ -33,10 +32,13 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     ImageButton imgButtonMenBanBocor, imgButtonMenBanDalam, imgButtonMenBanLuar;
     TextView txtBanBocor, txtBanLuar, txtBanDalam;
     TextView jarak;
+    TextView nama_bengkel, alamat_bengkel;
 
     private static SharedPreferencesConfig sharedPreferencesConfig;
 
     public static double latitudePlace, longitudePlace;
+
+    public static String namaBengkel, alamatBengkel;
 
     private static Point ORIGIN_POINT;
     private static Point DESTIONATION_POINT;
@@ -63,6 +65,9 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         imgButtonMenBanDalam  = findViewById(R.id.imgButtonMenBanDalam);
         imgButtonMenBanLuar   = findViewById(R.id.imgButtonMenBanLuar);
 
+        nama_bengkel = findViewById(R.id.nama_bengkel);
+        alamat_bengkel = findViewById(R.id.bengkel_alamat);
+
         jarak = findViewById(R.id.jarak);
 
         txtBanBocor = findViewById(R.id.txtBanBocor);
@@ -80,6 +85,9 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         imgButtonMenBanBocor.setOnClickListener(this);
         imgButtonMenBanDalam.setOnClickListener(this);
         imgButtonMenBanLuar.setOnClickListener(this);
+
+        nama_bengkel.setText(namaBengkel);
+        alamat_bengkel.setText(alamatBengkel);
         
         requestDirectionPoint(ORIGIN_POINT, DESTIONATION_POINT);
 

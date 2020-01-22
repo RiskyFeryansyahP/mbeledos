@@ -12,6 +12,8 @@ public class BengkelModel {
 
     private double longitude;
 
+    private String phonenumber;
+
     public String getKode_bengkel() {
         return kode_bengkel;
     }
@@ -30,5 +32,9 @@ public class BengkelModel {
 
     public double getLongitude() {
         return longitude;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
     }
 }

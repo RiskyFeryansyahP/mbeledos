@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.bledos.Helper.SharedPreferencesConfig;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FusedLocationProviderClient fusedLocationProviderClient;
 
     private Button btnSignIn, btnSignup;
+
+    private TextView txt_about;
 
     private SharedPreferencesConfig sharedPreferencesConfig;
 
@@ -54,9 +57,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnSignIn = findViewById(R.id.btnSignInRoute);
         btnSignup = findViewById(R.id.btnSignUpRoute);
 
+        txt_about = findViewById(R.id.txt_about);
+
         // give action variable of button
         btnSignIn.setOnClickListener(this);
         btnSignup.setOnClickListener(this);
+        txt_about.setOnClickListener(this);
     }
 
     @Override
@@ -70,7 +76,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnSignUpRoute:
                 startActivity(new Intent(MainActivity.this, SignUp.class));
                 break;
-
+            case R.id.txt_about:
+                startActivity(new Intent(MainActivity.this, AboutActivity.class));
+                break;
         }
     }
 

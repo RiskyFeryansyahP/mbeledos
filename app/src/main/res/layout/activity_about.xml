@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutActivity">
+
+    <ImageView
+        android:id="@+id/logostiki"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/stiki"
+        />
+
+    <TextView
+        android:id="@+id/nama1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Nama : Risky Feryansyah Pribadi"
+        android:layout_below="@id/logostiki"/>
+
+    <TextView
+        android:id="@+id/nrp1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="NRP : 171111040"
+        android:layout_below="@id/nama1"/>
+
+    <ImageView
+        android:id="@+id/image1"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:src="@drawable/tebo"
+        android:layout_below="@id/nrp1"
+        />
+
+    <TextView
+        android:id="@+id/nama2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Nama : Shania Saraswati"
+        android:layout_below="@id/image1"/>
+
+    <TextView
+        android:id="@+id/nrp2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="NRP : 171111011"
+        android:layout_below="@id/nama2"/>
+
+    <ImageView
+        android:id="@+id/image2"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:src="@drawable/shania"
+        android:layout_below="@id/nrp2"
+        />
+
+    <TextView
+        android:id="@+id/nama3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Nama : Trio Kurniawan"
+        android:layout_below="@id/image2"/>
+
+    <TextView
+        android:id="@+id/nrp3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="NRP : 171111042"
+        android:layout_below="@id/nama3"/>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:src="@drawable/orbados"
+        android:layout_below="@id/nrp3"
+        />
+
+</RelativeLayout>

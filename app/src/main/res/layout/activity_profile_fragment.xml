@@ -51,6 +51,15 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 />
 
+            <Button
+                android:id="@+id/btnUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update"
+                android:layout_below="@id/txtLevelProfile"
+                android:layout_centerInParent="true"
+                />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

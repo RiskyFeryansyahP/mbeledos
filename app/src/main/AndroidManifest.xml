@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MapsOrder"></activity>
+        <activity android:name=".UpdateProfileActivity"></activity>
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".MapsOrder" />
         <activity android:name=".TransaksiActivity" />
         <activity android:name=".OrderActivity" />
         <activity android:name=".Fragments.HomeFragment" />
@@ -22,7 +24,10 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".HalamanSignIn" />
         <activity android:name=".SignUp" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/SplashScreenStyle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
